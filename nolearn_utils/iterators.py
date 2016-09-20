@@ -203,8 +203,12 @@ class AffineTransformBatchIteratorMixin(object):
             scale = choice(self.affine_scale_choices)
             rotation = choice(self.affine_rotation_choices)
             shear = choice(self.affine_shear_choices)
-            translation_y = choice(self.affine_translation_y_choices or self.affine_translation_choices)
-            translation_x = choice(self.affine_translation_x_choices or self.affine_translation_choices)
+            
+            affine_translation_y_choices = self.affine_translation_choices if self.affine_translation_y_choices is None else self.affine_translation_y_choices
+            affine_translation_x_choices = self.affine_translation_choices if self.affine_translation_x_choices is None else self.affine_translation_x_choices
+            
+            translation_y = choice(affine_translation_y_choices)
+            translation_x = choice(affine_translation_x_choices)
             img_transformed, tform = im_affine_transform(
                 Xb[i], return_tform=True,
                 scale=scale, rotation=rotation,
