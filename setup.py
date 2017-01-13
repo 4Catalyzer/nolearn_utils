@@ -12,7 +12,9 @@ except IOError:
     README = CHANGES = ''
 
 install_requires = [
-    'scikit-image'
+    'joblib',
+    'numpy',
+    'scikit-image',
 ]
 
 examples_require = [
