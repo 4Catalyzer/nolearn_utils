@@ -15,7 +15,6 @@ install_requires = [
     'joblib',
     'numpy',
     'scikit-image',
-    'scipy',
     'six',
 ]
 

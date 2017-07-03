@@ -3,8 +3,6 @@ import os
 import pytest
 from skimage.data import astronaut as get_lena
 from skimage.io import imsave
-from six.moves import xrange
-import six
 from tempfile import mkstemp
 
 from nolearn_utils.iterators import BaseBatchIterator, make_iterator
@@ -23,7 +21,7 @@ def y():
 @pytest.fixture
 def lena_tmp_paths(n=100):
     paths = []
-    for i in xrange(10):
+    for i in range(10):
         _, fname = mkstemp(suffix='.png')
         imsave(fname, get_lena())
         paths.append(fname)
@@ -49,7 +47,7 @@ def test_shuffle_batch_iterator(X, y):
 
     iterator = Iterator(batch_size=128)
     np.random.seed(42)  # Deterministic tests
-    Xb, yb = six.next(iter(iterator(X, y)))
+    Xb, yb = next(iter(iterator(X, y)))
     assert np.all(Xb != X[:128])
     assert np.all(yb != y[:128])
 
