@@ -4,5 +4,4 @@ joblib
 matplotlib
 numpy
 scikit-image
-scipy
 six
